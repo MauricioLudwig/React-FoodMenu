@@ -5,12 +5,12 @@ class Footer extends Component {
     render() {
 
         const styleObj = {
-            backgroundColor: "lightgray"
+            backgroundColor: ""
         }
 
         return (
-            <footer style={styleObj} className="container fixed-bottom text-center pt-3">
-                <p className="lead"><strong>By: Mauricio &copy; 2017</strong></p>
+            <footer style={styleObj} className="container fixed-bottom text-center mt-3">
+                <p className="lead"><strong>React Labb by: Mauricio &copy; 2017</strong></p>
             </footer>
         )
     }

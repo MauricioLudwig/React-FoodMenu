@@ -45,3 +45,9 @@ body {
   color: white;
   padding: 20px 5px 20px 5px;
 }
+.cartItems{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid darkred;
+  margin-bottom: 10px;
+}

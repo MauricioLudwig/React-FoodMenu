@@ -29,10 +29,9 @@ class App extends Component {
     super();
     this.state = {
       name: "Mauricio",
-      sum: 0,
       food: {},
       cartSum: 0,
-      cart: [],
+      cartItems: [],
     };
   }
 
@@ -88,20 +87,40 @@ class App extends Component {
     console.log(name);
     console.log(price);
 
+    var newItem = {
+      "name": name,
+      "price": price,
+    };
+
+    this.state.cartItems.push(newItem);
+
+    console.log(this.state.cartItems);
+
     this.setState({
-      cartSum: this.state.cartSum + price,  
+      cartSum: this.state.cartSum + price,
+      cartItems: this.state.cartItems,  
     })
   }
 
-  removeFromCart(){
+  removeFromCart(index, price){
+    
     console.log('Remove from cart');
-    alert('remove');
+    console.log(index);
+    console.log(price);
+
+    var list = this.state.cartItems;
+    list.splice(index, 1);
+    this.setState({
+      cartItems: list,
+      cartSum: this.state.cartSum - price,
+    })
   }
 
   clearCart(){
     console.log('Clear cart');
     this.setState({
       cartSum: 0,
+      cartItems: [],
     })
   }
 
@@ -126,7 +145,7 @@ class App extends Component {
           {/* Cart */}
           <div className="row">
             <div className="col-sm-10 offset-sm-1">
-              <Route exact path='/cart' render={() => <Cart compName={"Cart"} clearCart={this.clearCart.bind(this)} removeProduct={this.removeFromCart.bind(this)}/>} />
+              <Route exact path='/cart' render={() => <Cart compName={"Cart"} clearCart={this.clearCart.bind(this)} cartItems={this.state.cartItems} removeProduct={this.removeFromCart.bind(this)}/>} />
             </div>
           </div>
           {/* Footer */}
